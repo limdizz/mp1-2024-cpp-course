@@ -6,14 +6,15 @@
 #include <stdexcept>
 #include "Warehouse.h"
 
-class Receipt {
+class Receipt
+{
 private:
     std::vector<Product> list;
 
 public:
-    void addFromWarehouse(Warehouse& w, const std::string& name, int count);
+    void addFromWarehouse(Warehouse &w, const std::string &name, int count);
 
-    void remove(const std::string& name);
+    void remove(const std::string &name);
 
     double calculateTotalSum() const;
 

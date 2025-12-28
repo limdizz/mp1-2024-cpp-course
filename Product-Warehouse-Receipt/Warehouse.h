@@ -4,22 +4,23 @@
 #include <stdexcept>
 #include <iostream>
 
-class Warehouse {
+class Warehouse
+{
 private:
     std::vector<Product> products;
 
 public:
-    void add(const Product& product);
+    void add(const Product &product);
 
-    int find(const std::string& name) const;
+    int find(const std::string &name) const;
 
-    bool checkAvailable(const std::string& name, int need) const;
+    bool checkAvailable(const std::string &name, int need) const;
 
-    void take(const std::string& name, int count);
+    void take(const std::string &name, int count);
 
     void print() const;
 
-    const std::vector<Product>& getProducts() const;
+    const std::vector<Product> &getProducts() const;
 
     friend class Receipt;
 };

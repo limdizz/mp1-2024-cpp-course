@@ -1,44 +1,57 @@
 #include "Warehouse.h"
 
-void Warehouse::add(const Product& product) {
+void Warehouse::add(const Product &product)
+{
     products.push_back(product);
 }
 
-int Warehouse::find(const std::string& name) const {
-    for (size_t i = 0; i < products.size(); ++i) {
-        if (products[i].getName() == name) {
+int Warehouse::find(const std::string &name) const
+{
+    for (size_t i = 0; i < products.size(); ++i)
+    {
+        if (products[i].getName() == name)
+        {
             return static_cast<int>(i);
         }
     }
     return -1;
 }
 
-bool Warehouse::checkAvailable(const std::string& name, int need) const {
+bool Warehouse::checkAvailable(const std::string &name, int need) const
+{
     int idx = find(name);
-    if (idx == -1) return false;
+    if (idx == -1)
+        return false;
     return products[idx].getCount() >= need;
 }
 
-void Warehouse::take(const std::string& name, int count) {
+void Warehouse::take(const std::string &name, int count)
+{
     int idx = find(name);
-    if (idx == -1) {
-        throw std::logic_error("Товара нет на складе");
+    if (idx == -1)
+    {
+        throw std::logic_error("The product is out of stock");
     }
     products[idx].subCount(count);
 }
 
-void Warehouse::print() const {
-    std::cout << "\n=== Склад ===\n";
-    if (products.empty()) {
-        std::cout << "Склад пуст\n";
+void Warehouse::print() const
+{
+    std::cout << "\n=== WAREHOUSE ===\n";
+    if (products.empty())
+    {
+        std::cout << "The warehouse is empty\n";
     }
-    else {
-        for (const auto& product : products) {
-            product.print();
+    else
+    {
+        for (const auto &product : products)
+        {
+            std::cout << product;
         }
     }
 }
 
-const std::vector<Product>& Warehouse::getProducts() const {
+const std::vector<Product> &Warehouse::getProducts() const
+{
     return products;
 }
